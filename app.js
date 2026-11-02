@@ -11,11 +11,11 @@ let current = null;
 async function loadTafsir(surah, ayah) {
   tafsir.textContent = 'جارٍ تحميل التفسير…';
   try {
-    const response = await fetch(`https://quranenc.com/api/v1/tafsir/aya/arabic_saadi/${surah}/${ayah}`, { cache: 'no-store' });
+    const response = await fetch(`https://api.alquran.cloud/v1/ayah/${surah}:${ayah}/ar.muyassar`, { cache: 'no-store' });
     if (!response.ok) throw new Error('Tafsir service unavailable');
     const payload = await response.json();
-    if (!payload.result?.[0]?.text) throw new Error('No tafsir returned');
-    tafsir.textContent = payload.result[0].text;
+    if (!payload.data?.text) throw new Error('No tafsir returned');
+    tafsir.textContent = payload.data.text;
   } catch (_) { tafsir.textContent = 'تعذّر تحميل التفسير حالياً.'; }
 }
 
