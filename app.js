@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#0c3b37" />
     <meta
       name="description"
-      content="Tafsir Layat brings you a random Qur'an ayah, a clean translation, and a quick Tafsir reflection."
+      content="Tafsir Layat brings you a random Qur'an ayah, a clean translation, and a reflective tafsir."
     />
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icon.svg" type="image/svg+xml" />
