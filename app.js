@@ -68,7 +68,7 @@ async function ayahImage() {
   const enLines = wrapText(context, `“${current.translation}”`, 1170);
   enLines.forEach(line => { context.fillText(line, 800, y); y += 72; });
   y += 72; context.fillStyle = '#c99d52'; context.font = '600 27px "DM Sans", sans-serif'; context.fillText(current.reference.toUpperCase(), 800, y);
-  context.fillStyle = '#6c7973'; context.font = '24px "DM Sans", sans-serif'; context.fillText('ĀYAH', 800, 1770);
+  context.fillStyle = '#6c7973'; context.font = '24px "DM Sans", sans-serif'; context.fillText('آية | AYAH', 800, 1770);
   return new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
 }
 
@@ -78,7 +78,7 @@ share.addEventListener('click', async () => {
   try {
     const image = await ayahImage(); if (!image) throw new Error('Image unavailable');
     const file = new File([image], `ayah-${current.reference.replaceAll(/[^a-z0-9]/gi, '-').toLowerCase()}.png`, { type: 'image/png' });
-    if (navigator.canShare?.({ files: [file] })) await navigator.share({ title: 'Āyah', files: [file] });
+    if (navigator.canShare?.({ files: [file] })) await navigator.share({ title: 'آية | Ayah', files: [file] });
     else { const link = document.createElement('a'); link.href = URL.createObjectURL(file); link.download = file.name; link.click(); URL.revokeObjectURL(link.href); status.textContent = 'Image downloaded.'; }
   } catch (error) { if (error.name !== 'AbortError') status.textContent = 'Could not create the image. Please try again.'; }
   finally { share.disabled = false; }
